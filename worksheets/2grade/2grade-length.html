@@ -117,13 +117,9 @@
 
   <script>
     function printPDF() {
-      var win = window.open('2grade-length.pdf', '_blank');
-      if (win) {
-        win.addEventListener('load', function () {
-          win.focus();
-          win.print();
-        });
-      }
+      var frame = document.getElementById('pdf-frame');
+      frame.contentWindow.focus();
+      frame.contentWindow.print();
     }
 
     async function downloadPDF() {
