@@ -96,6 +96,16 @@
       .pdf-container { padding: 12px; }
       iframe { height: calc(100vh - 110px); }
     }
+
+    @media print {
+      .top-bar { display: none; }
+      .pdf-container { padding: 0; }
+      iframe {
+        height: 100vh;
+        border-radius: 0;
+        box-shadow: none;
+      }
+    }
   </style>
 </head>
 <body>
@@ -106,8 +116,8 @@
       <span class="title-text">📏 2학년 · 길이재기</span>
     </div>
     <div class="btn-group">
-      <button class="btn btn-print" onclick="document.getElementById('pdf-frame').contentWindow.print()">🖨 바로 출력</button>
-      <a class="btn btn-download" href="2grade-length.pdf" download="2학년_길이재기.pdf">📄 PDF 다운로드</a>
+      <button class="btn btn-print" onclick="window.print()">🖨 바로 출력</button>
+      <button class="btn btn-download" onclick="downloadPDF()">📄 PDF 다운로드</button>
     </div>
   </div>
 
@@ -115,6 +125,24 @@
     <iframe id="pdf-frame" src="2grade-length.pdf"></iframe>
   </div>
 
+  <script>
+    async function downloadPDF() {
+      try {
+        var res = await fetch('2grade-length.pdf');
+        var blob = await res.blob();
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = '2학년_길이재기.pdf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
+      } catch (e) {
+        window.open('2grade-length.pdf', '_blank');
+      }
+    }
+  </script>
 
 </body>
 </html>
