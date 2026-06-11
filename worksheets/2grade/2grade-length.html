@@ -117,7 +117,9 @@
 
   <script>
     function printPDF() {
-      window.open('2grade-length.pdf', '_blank');
+      var frame = document.getElementById('pdf-frame');
+      frame.contentWindow.focus();
+      frame.contentWindow.print();
     }
   </script>
 
