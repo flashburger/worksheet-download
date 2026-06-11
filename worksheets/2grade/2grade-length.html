@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2학년 길이재기 학습지</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic:wght@400;700;800&display=swap');
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Nanum Gothic', sans-serif;
+      background: #f7f9fc;
+      color: #222;
+      padding: 24px 16px;
+    }
+
+    .page-wrap {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 36px 40px 40px;
+    }
+
+    /* 버튼 */
+    .btn-group {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+      margin-bottom: 20px;
+    }
+    .btn {
+      padding: 9px 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+      font-family: 'Nanum Gothic', sans-serif;
+      font-weight: 700;
+      transition: opacity 0.15s;
+    }
+    .btn:hover { opacity: 0.85; }
+    .btn-pdf  { background: #3b7de9; color: #fff; }
+    .btn-print { background: #eef2fb; color: #3b7de9; }
+
+    /* 헤더 */
+    .header {
+      text-align: center;
+      margin-bottom: 28px;
+      padding-bottom: 20px;
+      border-bottom: 2.5px solid #e4eaf7;
+    }
+    .grade-tag {
+      display: inline-block;
+      background: #e8f0fe;
+      color: #3b7de9;
+      padding: 3px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+    .header h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #1a2540;
+      margin-bottom: 14px;
+      letter-spacing: -0.5px;
+    }
+    .meta-row {
+      display: flex;
+      justify-content: center;
+      gap: 32px;
+      font-size: 14px;
+      color: #555;
+      flex-wrap: wrap;
+    }
+    .meta-row span { display: flex; align-items: center; gap: 6px; }
+    .meta-row .label { color: #888; }
+    .info-line {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+      font-size: 15px;
+      border-top: 1px solid #eef2fb;
+      padding-top: 14px;
+      gap: 20px;
+    }
+    .info-field {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex: 1;
+    }
+    .info-field .field-label { color: #888; font-size: 14px; white-space: nowrap; }
+    .info-field .underline {
+      flex: 1;
+      border-bottom: 1.5px solid #bbb;
+      min-width: 80px;
+      height: 20px;
+    }
+
+    /* 안내 */
+    .guide-box {
+      background: #f0f5ff;
+      border-left: 4px solid #3b7de9;
+      border-radius: 0 8px 8px 0;
+      padding: 10px 16px;
+      font-size: 13px;
+      color: #3b5ea6;
+      margin-bottom: 22px;
+      line-height: 1.7;
+    }
+
+    /* 문제 그리드 */
+    .problems {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+    .problem {
+      border: 1.5px solid #e4eaf7;
+      border-radius: 10px;
+      padding: 13px 15px;
+      background: #fafbff;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      min-height: 62px;
+    }
+    .problem.wide {
+      grid-column: span 2;
+    }
+    .pnum {
+      min-width: 26px;
+      height: 26px;
+      background: #3b7de9;
+      color: #fff;
+      border-radius: 50%;
+      font-size: 12px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .pcontent {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #1a2540;
+      flex: 1;
+    }
+    .blank {
+      display: inline-block;
+      min-width: 48px;
+      border-bottom: 2px solid #3b7de9;
+      margin: 0 3px;
+      vertical-align: bottom;
+      height: 20px;
+    }
+    .unit { color: #3b7de9; font-weight: 700; font-size: 14px; }
+
+    /* 정답 영역 */
+    .answer-section {
+      margin-top: 36px;
+      border-top: 2px dashed #c5d3ee;
+      padding-top: 22px;
+    }
+    .answer-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+    .answer-header h3 {
+      font-size: 15px;
+      font-weight: 800;
+      color: #3b7de9;
+    }
+    .answer-hint {
+      font-size: 12px;
+      color: #888;
+      margin-left: auto;
+    }
+    .answers {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+    }
+    .answer-item {
+      background: #f0f5ff;
+      border-radius: 8px;
+      padding: 8px 6px;
+      text-align: center;
+      font-size: 13px;
+    }
+    .answer-item .anum {
+      color: #888;
+      font-size: 11px;
+      font-weight: 700;
+      display: block;
+      margin-bottom: 3px;
+    }
+    .answer-item .aval {
+      color: #1a2540;
+      font-weight: 800;
+      font-size: 14px;
+    }
+
+    /* 프린트 */
+    @media print {
+      .no-print { display: none !important; }
+      body { background: #fff; padding: 0; }
+      .page-wrap {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 20px 28px 28px;
+        max-width: 100%;
+      }
+      .problem { break-inside: avoid; }
+      .answer-section { break-inside: avoid; }
+    }
+
+    @media (max-width: 600px) {
+      .page-wrap { padding: 20px 16px; }
+      .problems { grid-template-columns: 1fr; }
+      .problem.wide { grid-column: span 1; }
+      .answers { grid-template-columns: repeat(4, 1fr); }
+      .meta-row { gap: 16px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 버튼 -->
+  <div class="btn-group no-print">
+    <button class="btn btn-print" onclick="window.print()">🖨 바로 출력</button>
+    <button class="btn btn-pdf"   onclick="window.print()">📄 PDF 저장</button>
+  </div>
+  <p class="no-print" style="text-align:right; font-size:12px; color:#aaa; margin-bottom:8px;">프린트 창에서 'PDF로 저장' 선택</p>
+
+  <div class="page-wrap">
+
+    <!-- 헤더 -->
+    <div class="header">
+      <div class="grade-tag">2학년</div>
+      <h1>📏 길이재기</h1>
+      <div class="meta-row">
+        <span><span class="label">단원</span> cm · m 단위 길이</span>
+        <span><span class="label">난이도</span> 보통</span>
+        <span><span class="label">문제 수</span> 20문제</span>
+      </div>
+      <div class="info-line">
+        <div class="info-field">
+          <span class="field-label">이름</span>
+          <div class="underline"></div>
+        </div>
+        <div class="info-field">
+          <span class="field-label">날짜</span>
+          <div class="underline"></div>
+        </div>
+        <div class="info-field">
+          <span class="field-label">점수</span>
+          <div class="underline"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 안내 -->
+    <div class="guide-box">
+      💡 <b>풀이 안내:</b> 빈칸(_____)에 알맞은 수나 단위를 써 넣으세요.<br>
+      &nbsp;&nbsp;&nbsp;&nbsp;1m = 100cm 를 꼭 기억해요!
+    </div>
+
+    <!-- 문제 -->
+    <div class="problems">
+
+      <!-- 1~4: cm 단위 읽기 -->
+      <div class="problem">
+        <div class="pnum">1</div>
+        <div class="pcontent">
+          3cm + 5cm = <span class="blank"></span> <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">2</div>
+        <div class="pcontent">
+          9cm − 4cm = <span class="blank"></span> <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">3</div>
+        <div class="pcontent">
+          12cm + 7cm = <span class="blank"></span> <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">4</div>
+        <div class="pcontent">
+          15cm − 8cm = <span class="blank"></span> <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <!-- 5~6: m 단위 읽기 -->
+      <div class="problem">
+        <div class="pnum">5</div>
+        <div class="pcontent">
+          1m = <span class="blank"></span> <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">6</div>
+        <div class="pcontent">
+          200cm = <span class="blank"></span> <span class="unit">m</span>
+        </div>
+      </div>
+
+      <!-- 7~10: cm ↔ m 변환 -->
+      <div class="problem">
+        <div class="pnum">7</div>
+        <div class="pcontent">
+          1m 30cm = <span class="blank"></span> <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">8</div>
+        <div class="pcontent">
+          250cm = <span class="blank"></span> m <span class="blank"></span> cm
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">9</div>
+        <div class="pcontent">
+          3m 45cm = <span class="blank"></span> <span class="unit">cm</span>
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">10</div>
+        <div class="pcontent">
+          180cm = <span class="blank"></span> m <span class="blank"></span> cm
+        </div>
+      </div>
+
+      <!-- 11~14: 길이 비교 -->
+      <div class="problem">
+        <div class="pnum">11</div>
+        <div class="pcontent">
+          더 긴 것에 ○표 하세요.<br>
+          &nbsp;&nbsp;50cm &nbsp;·&nbsp; 1m
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">12</div>
+        <div class="pcontent">
+          더 짧은 것에 ○표 하세요.<br>
+          &nbsp;&nbsp;2m &nbsp;·&nbsp; 150cm
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">13</div>
+        <div class="pcontent">
+          □ 안에 &gt;, =, &lt; 를 써 넣으세요.<br>
+          &nbsp;&nbsp;1m 20cm &nbsp; <span class="blank" style="min-width:32px"></span> &nbsp; 120cm
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">14</div>
+        <div class="pcontent">
+          □ 안에 &gt;, =, &lt; 를 써 넣으세요.<br>
+          &nbsp;&nbsp;2m 5cm &nbsp; <span class="blank" style="min-width:32px"></span> &nbsp; 250cm
+        </div>
+      </div>
+
+      <!-- 15~18: 길이 덧셈·뺄셈 (m+cm 혼합) -->
+      <div class="problem">
+        <div class="pnum">15</div>
+        <div class="pcontent">
+          1m 20cm + 30cm = <span class="blank"></span> m <span class="blank"></span> cm
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">16</div>
+        <div class="pcontent">
+          2m 50cm − 80cm = <span class="blank"></span> m <span class="blank"></span> cm
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">17</div>
+        <div class="pcontent">
+          1m 70cm + 1m 40cm = <span class="blank"></span> m <span class="blank"></span> cm
+        </div>
+      </div>
+
+      <div class="problem">
+        <div class="pnum">18</div>
+        <div class="pcontent">
+          3m 10cm − 1m 60cm = <span class="blank"></span> m <span class="blank"></span> cm
+        </div>
+      </div>
+
+      <!-- 19~20: 단위에 맞게 쓰기 -->
+      <div class="problem wide">
+        <div class="pnum">19</div>
+        <div class="pcontent">
+          연필의 길이는 약 15 <span class="blank" style="min-width:36px"></span> 이고,
+          교실의 가로 길이는 약 7 <span class="blank" style="min-width:36px"></span> 입니다.
+          &nbsp;&nbsp;<span style="font-size:13px;color:#888">(cm 또는 m 중 알맞은 것을 쓰세요)</span>
+        </div>
+      </div>
+
+      <div class="problem wide">
+        <div class="pnum">20</div>
+        <div class="pcontent">
+          줄자로 책상 길이를 재었더니 1m보다 25cm 더 길었습니다.<br>
+          책상의 길이는 <span class="blank"></span> m <span class="blank"></span> cm, 즉 <span class="blank"></span> cm입니다.
+        </div>
+      </div>
+
+    </div><!-- /problems -->
+
+    <!-- 정답 -->
+    <div class="answer-section">
+      <div class="answer-header">
+        <h3>✂ 정답 (점선을 잘라 보관하세요)</h3>
+        <span class="answer-hint">채점 후 아이와 함께 확인해보세요 😊</span>
+      </div>
+      <div class="answers">
+        <div class="answer-item"><span class="anum">1번</span><span class="aval">8 cm</span></div>
+        <div class="answer-item"><span class="anum">2번</span><span class="aval">5 cm</span></div>
+        <div class="answer-item"><span class="anum">3번</span><span class="aval">19 cm</span></div>
+        <div class="answer-item"><span class="anum">4번</span><span class="aval">7 cm</span></div>
+        <div class="answer-item"><span class="anum">5번</span><span class="aval">100 cm</span></div>
+        <div class="answer-item"><span class="anum">6번</span><span class="aval">2 m</span></div>
+        <div class="answer-item"><span class="anum">7번</span><span class="aval">130 cm</span></div>
+        <div class="answer-item"><span class="anum">8번</span><span class="aval">2m 50cm</span></div>
+        <div class="answer-item"><span class="anum">9번</span><span class="aval">345 cm</span></div>
+        <div class="answer-item"><span class="anum">10번</span><span class="aval">1m 80cm</span></div>
+        <div class="answer-item"><span class="anum">11번</span><span class="aval">1m</span></div>
+        <div class="answer-item"><span class="anum">12번</span><span class="aval">150cm</span></div>
+        <div class="answer-item"><span class="anum">13번</span><span class="aval">=</span></div>
+        <div class="answer-item"><span class="anum">14번</span><span class="aval">&lt;</span></div>
+        <div class="answer-item"><span class="anum">15번</span><span class="aval">1m 50cm</span></div>
+        <div class="answer-item"><span class="anum">16번</span><span class="aval">1m 70cm</span></div>
+        <div class="answer-item"><span class="anum">17번</span><span class="aval">3m 10cm</span></div>
+        <div class="answer-item"><span class="anum">18번</span><span class="aval">1m 50cm</span></div>
+        <div class="answer-item"><span class="anum">19번</span><span class="aval">cm / m</span></div>
+        <div class="answer-item"><span class="anum">20번</span><span class="aval">1m 25cm / 125cm</span></div>
+      </div>
+    </div>
+
+  </div><!-- /page-wrap -->
+
+</body>
+</html>
