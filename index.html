@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>초등 수학 학습지</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', sans-serif;
+      background: #f5f7fa;
+      color: #333;
+    }
+
+    header {
+      background: #fff;
+      border-bottom: 1px solid #e8ecf0;
+      padding: 20px 40px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    header .logo {
+      font-size: 22px;
+      font-weight: 700;
+      color: #2563eb;
+    }
+
+    header .logo span {
+      color: #f59e0b;
+    }
+
+    header p {
+      font-size: 13px;
+      color: #888;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      color: #fff;
+      text-align: center;
+      padding: 60px 20px;
+    }
+
+    .hero h1 {
+      font-size: 30px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      font-size: 15px;
+      opacity: 0.85;
+    }
+
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 40px 20px;
+    }
+
+    .grade-tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+    }
+
+    .grade-tabs button {
+      padding: 8px 20px;
+      border: 1px solid #d1d5db;
+      background: #fff;
+      border-radius: 20px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.15s;
+      color: #555;
+    }
+
+    .grade-tabs button:hover {
+      border-color: #2563eb;
+      color: #2563eb;
+    }
+
+    .grade-tabs button.active {
+      background: #2563eb;
+      border-color: #2563eb;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .section-title {
+      font-size: 17px;
+      font-weight: 700;
+      margin-bottom: 16px;
+      color: #111;
+    }
+
+    .worksheet-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e8ecf0;
+      border-radius: 12px;
+      padding: 20px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: box-shadow 0.15s;
+    }
+
+    .card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    }
+
+    .card .tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      width: fit-content;
+    }
+
+    .tag.addition    { background: #dbeafe; color: #1d4ed8; }
+    .tag.subtraction { background: #fce7f3; color: #be185d; }
+    .tag.multiply    { background: #dcfce7; color: #15803d; }
+    .tag.division    { background: #fef9c3; color: #854d0e; }
+    .tag.mixed       { background: #ede9fe; color: #6d28d9; }
+
+    .card h3 {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+
+    .card .meta {
+      font-size: 12px;
+      color: #999;
+    }
+
+    .card a {
+      margin-top: auto;
+      display: block;
+      text-align: center;
+      padding: 8px;
+      background: #f1f5f9;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      color: #2563eb;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+
+    .card a:hover {
+      background: #dbeafe;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px;
+      font-size: 13px;
+      color: #aaa;
+      border-top: 1px solid #e8ecf0;
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="logo">초등<span>수학</span> 학습지</div>
+    <p>무료 수학 학습지 다운로드</p>
+  </div>
+</header>
+
+<div class="hero">
+  <h1>초등학교 수학 학습지 무료 다운로드</h1>
+  <p>학년별·단원별 학습지를 PDF로 바로 내려받으세요</p>
+</div>
+
+<div class="container">
+
+  <div class="grade-tabs">
+    <button class="active">전체</button>
+    <button>1학년</button>
+    <button>2학년</button>
+    <button>3학년</button>
+    <button>4학년</button>
+    <button>5학년</button>
+    <button>6학년</button>
+  </div>
+
+  <!-- 1학년 -->
+  <div class="section-title">1학년</div>
+  <div class="worksheet-grid">
+    <div class="card">
+      <span class="tag addition">덧셈</span>
+      <h3>한 자리 수 덧셈 기초</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag subtraction">뺄셈</span>
+      <h3>한 자리 수 뺄셈 기초</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag mixed">혼합</span>
+      <h3>10 만들기 연습</h3>
+      <div class="meta">15문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+  </div>
+
+  <!-- 2학년 -->
+  <div class="section-title">2학년</div>
+  <div class="worksheet-grid">
+    <div class="card">
+      <span class="tag addition">덧셈</span>
+      <h3>두 자리 수 덧셈 (받아올림 없음)</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag addition">덧셈</span>
+      <h3>두 자리 수 덧셈 (받아올림 있음)</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag subtraction">뺄셈</span>
+      <h3>두 자리 수 뺄셈 (받아내림 없음)</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag subtraction">뺄셈</span>
+      <h3>두 자리 수 뺄셈 (받아내림 있음)</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+  </div>
+
+  <!-- 3학년 -->
+  <div class="section-title">3학년</div>
+  <div class="worksheet-grid">
+    <div class="card">
+      <span class="tag multiply">곱셈</span>
+      <h3>구구단 2단~5단</h3>
+      <div class="meta">25문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag multiply">곱셈</span>
+      <h3>구구단 6단~9단</h3>
+      <div class="meta">25문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag multiply">곱셈</span>
+      <h3>구구단 전체 복습</h3>
+      <div class="meta">50문제 · A4 2장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag division">나눗셈</span>
+      <h3>나눗셈 기초</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+  </div>
+
+  <!-- 4학년 -->
+  <div class="section-title">4학년</div>
+  <div class="worksheet-grid">
+    <div class="card">
+      <span class="tag multiply">곱셈</span>
+      <h3>세 자리 수 × 두 자리 수</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag division">나눗셈</span>
+      <h3>두 자리 수 ÷ 한 자리 수</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag mixed">혼합</span>
+      <h3>분수의 기초</h3>
+      <div class="meta">15문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+  </div>
+
+  <!-- 5학년 -->
+  <div class="section-title">5학년</div>
+  <div class="worksheet-grid">
+    <div class="card">
+      <span class="tag mixed">분수</span>
+      <h3>분수의 덧셈과 뺄셈</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag multiply">곱셈</span>
+      <h3>분수의 곱셈</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag mixed">소수</span>
+      <h3>소수의 덧셈과 뺄셈</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+  </div>
+
+  <!-- 6학년 -->
+  <div class="section-title">6학년</div>
+  <div class="worksheet-grid">
+    <div class="card">
+      <span class="tag division">나눗셈</span>
+      <h3>분수의 나눗셈</h3>
+      <div class="meta">20문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag mixed">비율</span>
+      <h3>비와 비율</h3>
+      <div class="meta">15문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+    <div class="card">
+      <span class="tag mixed">혼합</span>
+      <h3>비례식과 비례배분</h3>
+      <div class="meta">15문제 · A4 1장</div>
+      <a href="#">PDF 다운로드</a>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  &copy; 2026 초등수학 학습지. 모든 학습지는 무료로 제공됩니다.
+</footer>
+
+<script>
+  const tabs = document.querySelectorAll('.grade-tabs button');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
